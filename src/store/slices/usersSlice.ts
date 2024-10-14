@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Users } from '@/types/user';
-import { LOCALSTORAGE_KEY } from '@/constants/user-constants';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Users } from "@/types/user";
+import { LOCALSTORAGE_KEY } from "@/constants/user-constants";
 
 interface UsersState {
   users: Users[];
@@ -11,17 +11,20 @@ const initialState: UsersState = {
 };
 
 const usersSlice = createSlice({
-  name: 'users',
+  name: "users",
   initialState,
   reducers: {
     addUsers: (state, action: PayloadAction<Users[]>) => {
       const filtered = action.payload.filter((item) => {
-        return !state.users.some((n) => n.email === item.email)
-      })
+        return !state.users.some((n) => n.email === item.email);
+      });
       state.users = [...state.users, ...filtered];
+    },
+    setUsers: (state, action: PayloadAction<Users[]>) => {
+      state.users = [...action.payload];
     },
   },
 });
 
-export const { addUsers } = usersSlice.actions;
+export const { addUsers, setUsers } = usersSlice.actions;
 export default usersSlice.reducer;
