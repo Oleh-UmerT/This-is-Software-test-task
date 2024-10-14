@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Users } from "@/types/user";
-import { LOCALSTORAGE_KEY } from "@/constants/user-constants";
 
 interface UsersState {
   users: Users[];

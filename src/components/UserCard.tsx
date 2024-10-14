@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Users } from "@/types/user";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UserModal from "@/modals/OpenUserModal";
 import useUserStorage from "@/hooks/useUserStorage";
 import Image from "next/image";
@@ -11,7 +11,6 @@ interface UserCardProps {
 }
 
 const UserCard: FC<UserCardProps> = ({ user, noSaveButton = false }) => {
-  // console.log(user);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);

@@ -1,10 +1,23 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+} from "recharts";
 
-const TemperatureChart = ({ timeArr, tempArr }: any) => {
+interface Props {
+  timeArr: string[];
+  tempArr: number[];
+}
+
+const TemperatureChart: React.FC<Props> = ({ timeArr, tempArr }) => {
   const data = timeArr.map((time: string, index: number) => ({
     time: time.split("T")[1],
-    temperature: tempArr[index], 
+    temperature: tempArr[index],
   }));
 
   return (

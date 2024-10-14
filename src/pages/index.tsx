@@ -15,9 +15,9 @@ export default function Home() {
   const {
     data: users,
     isLoading: isLoadingUser,
-    isError: fetchError,
     refetch,
   } = useGetCurrentUsersQuery(amount);
+  /* eslint-disable  @typescript-eslint/no-explicit-any */
   const cachedUsers = useSelector((state: any) => state.users.users);
 
   useEffect(() => {

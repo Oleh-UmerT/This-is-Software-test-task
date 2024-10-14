@@ -16,6 +16,7 @@ export const useGetWeather = (lon: string, lan: string) => {
         );
         setData(response.data);
         setError(null);
+        /* eslint-disable  @typescript-eslint/no-explicit-any */
       } catch (err: any) {
         setError(err.message || "Error fetching data");
       } finally {

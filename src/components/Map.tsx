@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 
-const MapComponent = ({ lat, lng, customMarkerImage }: any) => {
+interface Props {
+  lat: number;
+  lng: number
+}
+
+const MapComponent: React.FC<Props> = ({ lat, lng }) => {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(typeof window !== "undefined");
   }, []);
-
-  // const customIcon = L.icon({
-  //   iconUrl: customMarkerImage,
-  //   iconSize: [38, 38],
-  //   iconAnchor: [lat, lng],
-  // });
 
   return isClient ? (
     <MapContainer

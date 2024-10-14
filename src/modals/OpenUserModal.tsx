@@ -30,11 +30,7 @@ const UserModal: FC<UserModalProps> = ({ isOpen, onRequestClose, data }) => {
   const [maxTemp, setMaxTemp] = useState(0);
   const [timeArr, setTimeArr] = useState<string[]>([]);
   const [tempArr, setTempArr] = useState<number[]>([]);
-  const {
-    data: weather,
-    loading,
-    error,
-  } = useGetWeather(
+  const { data: weather, loading } = useGetWeather(
     data?.location.coordinates.longitude,
     data?.location.coordinates.latitude
   );
@@ -91,7 +87,6 @@ const UserModal: FC<UserModalProps> = ({ isOpen, onRequestClose, data }) => {
             <Map
               lat={+data.location.coordinates.latitude}
               lng={+data.location.coordinates.longitude}
-              customMarkerImage={data.picture.thumbnail}
             />
           )}
           <div className="flex flex-col gap-5 items-center">
@@ -113,6 +108,12 @@ const UserModal: FC<UserModalProps> = ({ isOpen, onRequestClose, data }) => {
 
             <TemperatureChart timeArr={timeArr} tempArr={tempArr} />
           </div>
+          <button
+            className="border border-solid border-black rounded-md px-3 py-1 hover:bg-red-200 font-semibold"
+            onClick={onRequestClose}
+          >
+            Close
+          </button>
         </div>
       )}
     </Modal>
